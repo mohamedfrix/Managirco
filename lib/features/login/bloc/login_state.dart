@@ -4,3 +4,9 @@ part of 'login_bloc.dart';
 sealed class LoginState {}
 
 final class LoginInitial extends LoginState {}
+
+final class LoginScreenWrongCredentials extends LoginState {}
+
+final class LoginScreenSuccess extends LoginState {}
+
+final class LoginLoading extends LoginState {}
