@@ -21,7 +21,8 @@ class LoginScreen extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state is LoginScreenSuccess){
-          print('logged in : $rememberMe');
+          //print('logged in : $rememberMe');
+          context.push('/home');
         }
       },
       child: Scaffold(

@@ -1,5 +1,7 @@
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:mobile_project/features/home/bloc/home_bloc.dart";
+import "package:mobile_project/features/home/ui/home_screen.dart";
 import "package:mobile_project/features/login/bloc/login_bloc.dart";
 import "package:mobile_project/features/login/ui/login_screen.dart";
 import "package:mobile_project/features/signup/bloc/signup_bloc.dart";
@@ -52,6 +54,16 @@ class AppRouter {
               return BlocProvider(
                 create: (context) => SignupBloc(),
                 child: SignupScreen(),
+              );
+            }
+        ),
+
+        GoRoute(
+            path: '/home',
+            builder: (context, state) {
+              return BlocProvider(
+                create: (context) => HomeBloc(),
+                child: HomeScreen(),
               );
             }
         ),
