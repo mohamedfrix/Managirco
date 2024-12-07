@@ -1,7 +1,9 @@
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:mobile_project/features/collaboration/ui/add_collaboration_screen.dart";
 import "package:mobile_project/features/event/bloc/events_bloc.dart";
 import "package:mobile_project/features/event/ui/add_event_screen.dart";
+import "package:mobile_project/features/collaboration/ui/collaborations_screen.dart";
 import "package:mobile_project/features/event/ui/events_screen.dart";
 import "package:mobile_project/features/home/bloc/home_bloc.dart";
 import "package:mobile_project/features/home/ui/home_screen.dart";
@@ -14,6 +16,7 @@ import "package:mobile_project/features/splash/ui/splash_screen.dart";
 import "package:mobile_project/features/welcome/bloc/welcome_bloc.dart";
 import "package:mobile_project/features/welcome/ui/welcome_root_screen.dart";
 
+import "../features/collaboration/ui/a_collaboration_screen.dart";
 import "../features/event/ui/an_event_screen.dart";
 
 class AppRouter {
@@ -95,6 +98,26 @@ class AppRouter {
             path: '/events/create',
             builder: (context, state) {
               return AddEventScreen();
+            }
+        ),
+
+        GoRoute(
+            path: '/collaborations',
+            builder: (context, state) {
+              return CollaborationsScreen();
+            }
+        ),
+        GoRoute(
+            path: '/collaborations/create',
+            builder: (context, state) {
+              return AddCollaborationScreen();
+            }
+        ),
+        GoRoute(
+            path: '/collaboration/:name',
+            builder: (context, state) {
+              final name = state.pathParameters['name']!;
+              return ACollaborationScreen(collaborationName: name,);
             }
         ),
 

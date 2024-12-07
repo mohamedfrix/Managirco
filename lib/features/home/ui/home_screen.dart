@@ -231,7 +231,7 @@ class HomeScreen extends StatelessWidget {
                       ),
 
                       GestureDetector(
-                        onTap: (){},
+                        onTap: (){context.push('/collaborations');},
                         child: Text(
                           'See all',
                           style: TextStyle(
