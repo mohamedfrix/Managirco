@@ -1,5 +1,8 @@
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:mobile_project/features/event/bloc/events_bloc.dart";
+import "package:mobile_project/features/event/ui/add_event_screen.dart";
+import "package:mobile_project/features/event/ui/events_screen.dart";
 import "package:mobile_project/features/home/bloc/home_bloc.dart";
 import "package:mobile_project/features/home/ui/home_screen.dart";
 import "package:mobile_project/features/login/bloc/login_bloc.dart";
@@ -10,6 +13,8 @@ import "package:mobile_project/features/splash/bloc/splash_bloc.dart";
 import "package:mobile_project/features/splash/ui/splash_screen.dart";
 import "package:mobile_project/features/welcome/bloc/welcome_bloc.dart";
 import "package:mobile_project/features/welcome/ui/welcome_root_screen.dart";
+
+import "../features/event/ui/an_event_screen.dart";
 
 class AppRouter {
   AppRouter._();
@@ -65,6 +70,31 @@ class AppRouter {
                 create: (context) => HomeBloc(),
                 child: HomeScreen(),
               );
+            }
+        ),
+
+        GoRoute(
+            path: '/events',
+            builder: (context, state) {
+              return BlocProvider(
+                create: (context) => EventsBloc(),
+                child: EventsScreen(),
+              );
+            }
+        ),
+
+        GoRoute(
+            path: '/event/:name',
+            builder: (context, state) {
+              final name = state.pathParameters['name']!;
+              return AnEventScreen(eventName: name,);
+            }
+        ),
+
+        GoRoute(
+            path: '/events/create',
+            builder: (context, state) {
+              return AddEventScreen();
             }
         ),
 
