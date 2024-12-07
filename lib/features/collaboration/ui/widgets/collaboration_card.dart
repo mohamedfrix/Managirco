@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CollaborationCard extends StatelessWidget {
-  const CollaborationCard({super.key, required this.TapCallBack, required this.eventName, required this.collaborations_num, required this.tasks_num, required this.deadline, required this.color});
+  const CollaborationCard({super.key, required this.TapCallBack, required this.eventName, required this.collaborations_num, required this.tasks_num, required this.deadline, required this.color, required this.InfoTapCallback});
 
+  final InfoTapCallback;
   final TapCallBack;
   final eventName;
   final collaborations_num;
@@ -89,7 +90,10 @@ class CollaborationCard extends StatelessWidget {
 
                   ],
                 ),
-                SvgPicture.asset('assets/images/icons/pen.svg', height: 25.h,),
+                GestureDetector(
+                  onTap: InfoTapCallback,
+                  child: SvgPicture.asset('assets/images/icons/pen.svg', height: 25.h,)
+                ),
               ],
             ),
             Container(

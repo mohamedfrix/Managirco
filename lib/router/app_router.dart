@@ -1,6 +1,9 @@
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:mobile_project/features/collaboration/bloc/collaboration_pages_bloc/collaboration_pages_bloc.dart";
+import "package:mobile_project/features/collaboration/ui/a_collaboration_part_screen.dart";
 import "package:mobile_project/features/collaboration/ui/add_collaboration_screen.dart";
+import "package:mobile_project/features/collaboration/ui/create_task_screen.dart";
 import "package:mobile_project/features/event/bloc/events_bloc.dart";
 import "package:mobile_project/features/event/ui/add_event_screen.dart";
 import "package:mobile_project/features/collaboration/ui/collaborations_screen.dart";
@@ -114,10 +117,28 @@ class AppRouter {
             }
         ),
         GoRoute(
-            path: '/collaboration/:name',
+            path: '/collaboration/info/:name',
             builder: (context, state) {
               final name = state.pathParameters['name']!;
               return ACollaborationScreen(collaborationName: name,);
+            }
+        ),
+
+        GoRoute(
+            path: '/collaboration/:name',
+            builder: (context, state) {
+              final name = state.pathParameters['name']!;
+              return BlocProvider(
+                create: (context) => CollaborationPagesBloc(),
+                child: ACollaborationPartScreen(collaborationName: name,),
+              );
+            }
+        ),
+
+        GoRoute(
+            path: '/tasks/create',
+            builder: (context, state) {
+              return CreateTaskScreen();
             }
         ),
 

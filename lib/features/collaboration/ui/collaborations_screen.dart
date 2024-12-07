@@ -102,6 +102,9 @@ class CollaborationsScreen extends StatelessWidget {
                     itemCount: events.length,
                     itemBuilder: (context, index){
                       return CollaborationCard(
+                        InfoTapCallback: (){
+                          context.push('/collaboration/info/${events[index]['name']}');
+                        },
                         TapCallBack: (){
                           context.push('/collaboration/${events[index]['name']}');
                         },

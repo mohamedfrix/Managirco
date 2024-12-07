@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CurrentEventsSection extends StatelessWidget {
   const CurrentEventsSection({super.key, this.data});
@@ -16,90 +17,93 @@ class CurrentEventsSection extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: data.length,
           itemBuilder: (context, index){
-            return Container(
-              margin: EdgeInsets.only(left: 10.w),
-              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
-              width: 150.w,
-              decoration: BoxDecoration(
-                  color: Color(int.parse(data[index]['color'].toString(), radix: 16)),
-                  borderRadius: BorderRadius.circular(12.r),
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1,
-                  )
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10.h,),
-                  Text(
-                    data[index]['name'].toString(),
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w600,
-                        fontSize: 15.sp
+            return GestureDetector(
+              onTap: (){context.push('/event/${data[index]['name']}');},
+              child: Container(
+                margin: EdgeInsets.only(left: 10.w),
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+                width: 150.w,
+                decoration: BoxDecoration(
+                    color: Color(int.parse(data[index]['color'].toString(), radix: 16)),
+                    borderRadius: BorderRadius.circular(12.r),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1,
+                    )
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10.h,),
+                    Text(
+                      data[index]['name'].toString(),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w600,
+                          fontSize: 15.sp
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 15.h,),
-                  Row(
-                    children: [
-                      SvgPicture.asset('assets/images/icons/collaborator.svg', height: 20.h,),
-                      SizedBox(width: 10.w,),
-                      Text(
-                        '${data[index]['collaborations_num']} Collaborations',
-                        style: TextStyle(
-                            color: const Color(0xFF646464),
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Montserrat'
-                        ),
-                      )
-                    ],
-                  ),
-
-                  SizedBox(height: 10.h,),
-
-                  Row(
-                    children: [
-                      SvgPicture.asset('assets/images/icons/clip.svg', height: 20.h,),
-                      SizedBox(width: 10.w,),
-                      Text(
-                        '${data[index]['tasks_num']} Tasks',
-                        style: TextStyle(
-                            color: const Color(0xFF646464),
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'Montserrat'
-                        ),
-                      )
-                    ],
-                  ),
-
-                  Spacer(),
-
-
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Row(
+                    SizedBox(height: 15.h,),
+                    Row(
                       children: [
-                        Spacer(),
-                        SvgPicture.asset('assets/images/icons/clock.svg', height: 20.h,),
+                        SvgPicture.asset('assets/images/icons/collaborator.svg', height: 20.h,),
                         SizedBox(width: 10.w,),
                         Text(
-                          '${data[index]['deadline']}',
+                          '${data[index]['collaborations_num']} Collaborations',
                           style: TextStyle(
                               color: const Color(0xFF646464),
                               fontSize: 10.sp,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.w400,
                               fontFamily: 'Montserrat'
                           ),
                         )
                       ],
                     ),
-                  ),
 
-                ],
+                    SizedBox(height: 10.h,),
+
+                    Row(
+                      children: [
+                        SvgPicture.asset('assets/images/icons/clip.svg', height: 20.h,),
+                        SizedBox(width: 10.w,),
+                        Text(
+                          '${data[index]['tasks_num']} Tasks',
+                          style: TextStyle(
+                              color: const Color(0xFF646464),
+                              fontSize: 10.sp,
+                              fontWeight: FontWeight.w400,
+                              fontFamily: 'Montserrat'
+                          ),
+                        )
+                      ],
+                    ),
+
+                    Spacer(),
+
+
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        children: [
+                          Spacer(),
+                          SvgPicture.asset('assets/images/icons/clock.svg', height: 20.h,),
+                          SizedBox(width: 10.w,),
+                          Text(
+                            '${data[index]['deadline']}',
+                            style: TextStyle(
+                                color: const Color(0xFF646464),
+                                fontSize: 10.sp,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'Montserrat'
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
+                  ],
+                ),
               ),
             );
           }),
