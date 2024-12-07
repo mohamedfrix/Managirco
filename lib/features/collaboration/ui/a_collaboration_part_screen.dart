@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_project/features/collaboration/bloc/collaboration_pages_bloc/collaboration_pages_bloc.dart';
+import 'package:mobile_project/features/collaboration/ui/widgets/collaboration_agenda_screen.dart';
 import 'package:mobile_project/features/collaboration/ui/widgets/collaboration_chat_screen.dart';
 import 'package:mobile_project/features/collaboration/ui/widgets/collaboration_submissions_screen.dart';
 import 'package:mobile_project/features/collaboration/ui/widgets/collaboration_tasks_screen.dart';
@@ -234,6 +235,9 @@ class _ACollaborationPartScreenState extends State<ACollaborationPartScreen> {
                   }
                   else if (state.currentPageIndex == 3){
                     return CollaborationSubmissionsScreen();
+                  }
+                  else if (state.currentPageIndex == 2){
+                    return CollaborationAgendaScreen();
                   }
                 }
                 return SizedBox();

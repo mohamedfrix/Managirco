@@ -32,10 +32,10 @@ class CustomBottomNavigationBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _buid_item(context,'assets/images/icons/setting.svg', 0, currentIndex, 35.w, 35.h, (){context.push('/settings');}),
-          _buid_item(context,'assets/images/icons/collaborator.svg', 1, currentIndex, 35.w, 35.h, (){context.push('/collaborations');}),
+          _buid_item(context,'assets/images/icons/collaborator.svg', 1, currentIndex, 35.w, 35.h, (){context.push('/myTeam');}),
           _buid_item(context,'assets/images/icons/home.svg', 2, currentIndex, 40.w, 35.h, (){context.push('/home');}),
-          _buid_item(context,'assets/images/icons/calendar.svg', 3, currentIndex, 40.w, 30.h, (){context.push('/calendar');}),
-          _buid_item(context,'assets/images/icons/account_2.svg', 4, currentIndex, 35.w, 40.h, (){context.push('/account');}),
+          _buid_item(context,'assets/images/icons/calendar.svg', 3, currentIndex, 40.w, 30.h, (){context.push('/agenda');}),
+          _buid_item(context,'assets/images/icons/account_2.svg', 4, currentIndex, 35.w, 40.h, (){context.push('/profile');}),
 
         ],
       ),

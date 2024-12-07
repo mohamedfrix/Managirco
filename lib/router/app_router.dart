@@ -1,5 +1,6 @@
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:go_router/go_router.dart";
+import "package:mobile_project/features/agenda/agenda_screen.dart";
 import "package:mobile_project/features/collaboration/bloc/collaboration_pages_bloc/collaboration_pages_bloc.dart";
 import "package:mobile_project/features/collaboration/ui/a_collaboration_part_screen.dart";
 import "package:mobile_project/features/collaboration/ui/add_collaboration_screen.dart";
@@ -12,15 +13,20 @@ import "package:mobile_project/features/home/bloc/home_bloc.dart";
 import "package:mobile_project/features/home/ui/home_screen.dart";
 import "package:mobile_project/features/login/bloc/login_bloc.dart";
 import "package:mobile_project/features/login/ui/login_screen.dart";
+import "package:mobile_project/features/myTeam/my_team.dart";
+import "package:mobile_project/features/review/review_task.dart";
+import "package:mobile_project/features/settings/settings_screen.dart";
 import "package:mobile_project/features/signup/bloc/signup_bloc.dart";
 import "package:mobile_project/features/signup/ui/signup_screen.dart";
 import "package:mobile_project/features/splash/bloc/splash_bloc.dart";
 import "package:mobile_project/features/splash/ui/splash_screen.dart";
+import "package:mobile_project/features/task_detail/taskDetails.dart";
 import "package:mobile_project/features/welcome/bloc/welcome_bloc.dart";
 import "package:mobile_project/features/welcome/ui/welcome_root_screen.dart";
 
 import "../features/collaboration/ui/a_collaboration_screen.dart";
 import "../features/event/ui/an_event_screen.dart";
+import "../features/profileSetting/profile_settings.dart";
 
 class AppRouter {
   AppRouter._();
@@ -142,6 +148,46 @@ class AppRouter {
             }
         ),
 
+        GoRoute(
+            path: '/settings',
+            builder: (context, state) {
+              return SettingsScreen();
+            }
+        ),
+        GoRoute(
+            path: '/myTeam',
+            builder: (context, state) {
+              return MyTeam();
+            }
+        ),
+        GoRoute(
+            path: '/profile',
+            builder: (context, state) {
+              return ProfileSetting();
+            }
+        ),
+        GoRoute(
+            path: '/agenda',
+            builder: (context, state) {
+              return AgendaScreen();
+            }
+        ),
+
+        GoRoute(
+            path: '/taskDetail/:name',
+
+            builder: (context, state) {
+              final name = state.pathParameters['name']!;
+              return Taskdetails(name: name,);
+            }
+        ),
+
+        GoRoute(
+            path: '/review',
+            builder: (context, state) {
+              return ReviewTask();
+            }
+        ),
       ]
   );
 }
