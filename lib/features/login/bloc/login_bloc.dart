@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:meta/meta.dart';
 
 part 'login_event.dart';
@@ -23,6 +24,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
 
   FutureOr<void> _login_request(LoginScreenRequestEvent event, Emitter<LoginState> emit) async {
+    final base_url = dotenv.get('API_URL');
+    print(base_url);
     var users = [
       {'username' : 'moh', 'password' : '123'},
     ];

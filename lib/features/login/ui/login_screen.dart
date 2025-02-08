@@ -151,7 +151,7 @@ class LoginScreen extends StatelessWidget {
                             SizedBox(height: 45.h,),
 
                             TextFormField(
-
+                              obscureText: true,
                               controller: _password_controller,
                                 decoration: InputDecoration(
                                   labelText: 'Password',
@@ -159,12 +159,12 @@ class LoginScreen extends StatelessWidget {
                                     padding: EdgeInsets.only(top: 12.h, bottom: 12.h, left: 0, right: 0),
                                     child: SvgPicture.asset('assets/images/icons/lock_icon.svg', height: 5.h,),
                                   ),
-                                  suffixIcon: GestureDetector(
-                                    onTap: () {
-                                      print('show password');
-                                    },
-                                    child: Icon(Icons.remove_red_eye_rounded, color: ColorPalette.primaryLightL,),
-                                  ),
+                                  // suffixIcon: GestureDetector(
+                                  //   onTap: () {
+                                  //     print('show password');
+                                  //   },
+                                  //   child: Icon(Icons.remove_red_eye_rounded, color: ColorPalette.primaryLightL,),
+                                  // ),
 
                                   labelStyle: TextStyle(
                                       fontFamily: 'Montserrat',
